@@ -1,0 +1,170 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color:#777;
+    padding: 20px;
+}
+
+/* Style 1 for the profile image*/
+.header{
+    height: 95vh;
+    background-image:linear-gradient(to right,rgba(128, 214, 113, 0.801), rgba(40, 180, 133, 0.801)) ,url(../img/profile\ picture.jpg);
+    background-size: contain  ;
+    background-repeat: no-repeat;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    position: relative;
+}
+
+/* Style 2 for the logo at the top let*/
+.logo-box{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo{
+    height: 35px;
+    font-size: 300%;
+    color:rgba(100, 95, 95, 0.445);
+}
+
+
+/* Style 4 for centering the header */
+.text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Style 3 for the Headers */
+.heading-primary{
+    color: #fff;
+    text-transform: uppercase; 
+    backface-visibility: hidden; 
+    margin-bottom: 80px; 
+}
+
+.heading-primary-main{
+    display: block;
+    font-size: 5vw;
+    font-weight: 400;
+    letter-spacing: 4vh;
+    animation-name: moveInLeft;
+    animation-duration:1s;
+    animation-timing-function: ease-out; /*This is how the animation starts and ends*/
+    
+/*    
+    animation-iteration-count: 3; This is how many times the animation will play
+    animation-delay: 3s;
+ */
+}
+
+.heading-primary-sub{
+    display: block;
+    font-size: 2vw;
+    font-weight: 400;
+    letter-spacing: 3.2vh;
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft{
+    0%{
+        opacity:0;
+        transform: translateX(-100px);
+    }
+    80%{
+        transform:translate(10px);
+    }
+    100%{
+        opacity:1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight{
+    0%{
+        opacity:0;
+        transform: translateX(100px);
+    }
+    80%{
+        transform:translate(-10px);
+    }
+    100%{
+        opacity:1;
+        transform: translate(0);
+    }
+}
+
+.btn:link, .btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding:15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    animation: moveInBottom 1s ease-out;
+    transition:all .2s;
+    position: relative;
+}
+.btn:hover{
+    background-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+.btn:active{
+    transform:translateY(1px);
+    border:none;
+    outline: none;
+    box-shadow:0 5px 10px rgba(0,0,0,.2);
+}
+.btn-white{
+    background-color: #fff;
+    color:#777;
+}
+
+/* This is used to add a virtual element after the element specified. 
+    This virtual element is know as pseudo-element
+*/
+.btn::after{
+    content: "";
+    display:block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;  
+    z-index: -1;
+    background-color: #fff ;
+    transition: all .4s;
+}
+
+@keyframes moveInBottom{
+    0%{
+        transform: translateY(100px);
+    }
+    80%{
+        transform:translateY(10px);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+
+/* .btn-white::after{
+    background-color: #fff ;
+} */
+.btn:hover::after{
+    transform: scale(1.5); /*This makes the element double in size*/
+    opacity:0; 
+}
